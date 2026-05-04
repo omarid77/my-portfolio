@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omar ElSharif | Quality & Design Portfolio</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .profile-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            object-fit: cover;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            animation: slideInRight 1s ease;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin: 5px 0;
+            animation: slideInLeft 1s ease;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            display: inline-block;
+            font-size: 2rem;
+        }
+
+        .section h2 i {
+            margin-right: 10px;
+        }
+
+        .section h4 {
+            color: #ff6b35;
+            margin: 25px 0 10px 0;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .cert-item {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            transform: translateX(5px);
+            border-left-color: #ff6b35;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+        }
+
+        /* Stats Section New */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #667eea;
+        }
+
+        /* Projects Section New */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card .project-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 3rem;
+        }
+
+        .project-card h3 {
+            padding: 15px 15px 0 15px;
+            color: #333;
+        }
+
+        .project-card p {
+            padding: 10px 15px 15px 15px;
+            color: #666;
+        }
+
+        .contact-info {
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin: 15px 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-info p i {
+            color: #667eea;
+            margin-right: 10px;
+            width: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f0f0f0;
+            color: #667eea;
+            padding: 10px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(102,126,234,0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .section { padding: 25px; }
+            .section h2 { font-size: 1.5rem; }
+            .profile-img { width: 130px; height: 130px; }
+            .certificates-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="profile-container" data-aos="fade-down">
+        <img src="My Photo.jpg" alt="Omar ElSharif" class="profile-img" id="profileImage">
+        <h1>Omar ElSharif</h1>
+        <p><i class="fas fa-chart-line"></i> Quality Controller</p>
+        <p><i class="fas fa-palette"></i> Graphic Designer</p>
+        <p><i class="fas fa-mobile-alt"></i> UI/UX Designer</p>
+    </div>
+</header>
+
+<div class="container">
+    <!-- Education & Certificates -->
+    <div class="section" data-aos="fade-up">
+        <h2><i class="fas fa-graduation-cap"></i> Education & Certificates</h2>
+        <p><i class="fas fa-university"></i> <strong>Bachelor of Quality Control</strong></p>
+        
+        <h4><i class="fas fa-hard-hat"></i> Occupational Safety & Health</h4>
+        <div class="certificates-grid">
+            <div class="cert-item"><i class="fas fa-certificate"></i> 212-Hour Certified Safety Professional</div>
+            <div class="cert-item"><i class="fas fa-certificate"></i> 30-Hour OSHA General Industry | 14-17 Mar 2026</div>
+            <div class="cert-item"><i class="fas fa-certificate"></i> 16-Hour OSHA Confined Space Entry | 18-19 Mar 2026</div>
+            <div class="cert-item"><i class="fas fa-certificate"></i> 30-Hour OSHA Construction Industry | 28-31 Mar 2026</div>
+            <div class="cert-item"><i class="fas fa-certificate"></i> 16-Hour Safe Lifting & Rigging (SLO) | 1-2 Apr 2026</div>
+            <div class="cert-item"><i class="fas fa-certificate"></i> 16-Hour Scaffolding Supervisor (CSTS) | 4-5 Apr 2026</div>
+            <div class="cert-item"><i class="fas fa-certificate"></i> 16-Hour Certified Fire Specialist | 6-7 Apr 2026</div>
+            <div class="cert-item"><i class="fas fa-certificate"></i> 16-Hour Risk Assessor (CRA) | 8-9 Apr 2026</div>
+            <div class="cert-item"><i class="fas fa-certificate"></i> 16-Hour Crisis Management (CCM) | 11-12 Apr 2026</div>
+            <div class="cert-item"><i class="fas fa-certificate"></i> 40-Hour ISMS | 13-17 Apr 2026</div>
+            <div class="cert-item"><i class="fas fa-certificate"></i> 16-Hour ISO 45001:2018 | 18-19 Apr 2026</div>
+        </div>
+
+        <h4><i class="fas fa-utensils"></i> Food Quality & Safety</h4>
+        <div class="certificates-grid">
+            <div class="cert-item"><i class="fas fa-certificate"></i> Food Quality and Safety Certificate</div>
+            <div class="cert-item"><i class="fas fa-certificate"></i> Vocational Training - Tanta University</div>
+            <div class="cert-item"><i class="fas fa-certificate"></i> Food Preservation Technology (PRPS - GMP - GHP - HACCP - ISO 9001 - ISO 22000)</div>
+            <div class="cert-item"><i class="fas fa-certificate"></i> Food Quality (PRPS - GMP - GHP - HACCP - ISO 9001 - ISO 22000)</div>
+            <div class="cert-item"><i class="fas fa-certificate"></i> Food Microbiology (PRPS - GMP - GHP - HACCP - ISO 9001 - ISO 22000)</div>
+        </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="section" data-aos="fade-up" data-aos-delay="100">
+        <h2><i class="fas fa-cogs"></i> My Skills</h2>
+        <div class="skills-list">
+            <span class="skill-tag"><i class="fab fa-adobe"></i> Photoshop</span>
+            <span class="skill-tag"><i class="fas fa-video"></i> After Effects</span>
+            <span class="skill-tag"><i class="fas fa-drafting-compass"></i> AutoCAD</span>
+            <span class="skill-tag"><i class="fas fa-cube"></i> Blender</span>
+            <span class="skill-tag"><i class="fas fa-gamepad"></i> Unreal Engine</span>
+            <span class="skill-tag"><i class="fas fa-code"></i> Web Design/Dev</span>
+            <span class="skill-tag"><i class="fab fa-html5"></i> HTML & CSS</span>
+            <span class="skill-tag"><i class="fas fa-pencil-ruler"></i> UI/UX Design</span>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="section" data-aos="fade-up" data-aos-delay="200">
+        <h2><i class="fas fa-envelope"></i> Contact Me</h2>
+        <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> oelsharif82@gmail.com</p>
+            <p><i class="fas fa-phone-alt"></i> +20 1205530020</p>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/omar-elsharif-8849a3391/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/omarid77/my-portfolio" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.tiktok.com/@omarelsharif6" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+                <a href="https://www.facebook.com/share/1E91tuzcbC/" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+            </div>
+            
+            <div>
+                <a href="https://github.com/omarid77/my-portfolio/blob/main/Omar%20El%20Sharif%20-Quality%20controller.pdf" class="download-btn"><i class="fas fa-download"></i> Download CV (PDF)</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p><i class="far fa-copyright"></i> 2025 Omar ElSharif - جميع الحقوق محفوظة | Designed with <i class="fas fa-heart" style="color: #ff6b35;"></i> for Quality & Design</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+</script>
+
+</body>
+</html>
